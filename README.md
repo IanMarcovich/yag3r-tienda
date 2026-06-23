@@ -1,4 +1,4 @@
-# Proyecto Final - YAG3R TIENDA
+# 🛒 YAG3R-TIENDA API — Proyecto Final
 
 API Rest de administración de productos construida con **Node.js + Express + Firebase Firestore + JWT**.
 
@@ -7,7 +7,7 @@ API Rest de administración de productos construida con **Node.js + Express + Fi
 ## 📁 Estructura del proyecto
 
 ```
-yag3r-tienda api/
+YAG3R-TIENDA-api/
 ├── index.js                        # Punto de entrada del servidor
 ├── package.json
 ├── .env                            # Variables de entorno
@@ -47,7 +47,7 @@ Completá el archivo `.env` con tus credenciales reales:
 PORT=3000
 JWT_SECRET=tu_clave_secreta
 
-ADMIN_EMAIL=admin@tuweb.com
+ADMIN_EMAIL=admin@YAG3R-TIENDA.com
 ADMIN_PASSWORD=admin123
 
 FIREBASE_API_KEY=...
@@ -80,7 +80,7 @@ npm run start
 
 **Body:**
 ```json
-{ "email": "admin@tuweb.com", "password": "admin123" }
+{ "email": "admin@YAG3R-TIENDA.com", "password": "admin123" }
 ```
 
 ---
