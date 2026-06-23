@@ -1,4 +1,4 @@
-# 🛒 TechLab API — Proyecto Final
+# Proyecto Final
 
 API Rest de administración de productos construida con **Node.js + Express + Firebase Firestore + JWT**.
 
