@@ -1,4 +1,4 @@
-# Proyecto Final
+# Proyecto Final - YAG3R TIENDA
 
 API Rest de administración de productos construida con **Node.js + Express + Firebase Firestore + JWT**.
 
@@ -7,7 +7,7 @@ API Rest de administración de productos construida con **Node.js + Express + Fi
 ## 📁 Estructura del proyecto
 
 ```
-techlab-api/
+yag3r-tienda api/
 ├── index.js                        # Punto de entrada del servidor
 ├── package.json
 ├── .env                            # Variables de entorno (no subir a git)
