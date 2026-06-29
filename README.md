@@ -10,7 +10,7 @@ API Rest de administración de productos construida con **Node.js + Express + Fi
 yag3r-tienda api/
 ├── index.js                        # Punto de entrada del servidor
 ├── package.json
-├── .env                            # Variables de entorno (no subir a git)
+├── .env                            # Variables de entorno
 └── src/
     ├── config/
     │   └── firebase.js             # Configuración de Firebase
