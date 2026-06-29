@@ -263,26 +263,30 @@
         <div class="welcome-section" id="welcomeSection">
             <p>Explora nuestros productos exclusivos y gestiona tu carrito de compras.</p>
             <div class="btn-group">
+                <button class="store" onclick="showLoginSection()" style="background: linear-gradient(45deg, #667eea, #764ba2);">
+                    <i class="fas fa-user-lock"></i> ADMIN LOGIN
+                </button>
                 <a href="tienda.html" style="text-decoration: none;">
-                    <button class="store" onclick="">
+                    <button class="store">
                         <i class="fas fa-shopping-bag"></i> IR A LA TIENDA
                     </button>
                 </a>
             </div>
         </div>
 
-        <!-- Sección de Autenticación -->
+        <!-- Sección de Login -->
         <div class="auth-section" id="authSection" style="display: none;">
-            <h2 style="margin-bottom: 20px; color: #c084fc; font-family: 'Orbitron', monospace;">API - Gestión de Productos</h2>
+            <h2 style="margin-bottom: 20px; color: #c084fc; font-family: 'Orbitron', monospace;">Administración - YAG3R Gaming</h2>
             <div class="form-group">
                 <label for="email">Email:</label>
-                <input type="email" id="email" value="admin@YAG3R-TIENDA.com" />
+                <input type="email" id="email" placeholder="admin@yag3r.com" />
             </div>
             <div class="form-group">
                 <label for="password">Contraseña:</label>
-                <input type="password" id="password" value="admin123" />
+                <input type="password" id="password" placeholder="Contraseña" />
             </div>
-            <button onclick="login()">Iniciar Sesión</button>
+            <button onclick="submitLogin()" style="width: 100%; margin-bottom: 10px;">Iniciar Sesión</button>
+            <button class="logout" onclick="cancelAuth()" style="width: 100%;">Cancelar</button>
         </div>
 
         <!-- Sección de Productos (oculta hasta login) -->
@@ -322,19 +326,34 @@
     <script>
         const API_URL = 'http://localhost:3000';
 
-        // Mostrar panel de administrador
-        function showAdminPanel() {
+        // Mostrar sección de login
+        function showLoginSection() {
             document.getElementById('welcomeSection').style.display = 'none';
             document.getElementById('authSection').style.display = 'block';
+            clearAuthForm();
+        }
+
+        function cancelAuth() {
+            document.getElementById('welcomeSection').style.display = 'block';
+            document.getElementById('authSection').style.display = 'none';
+            clearAuthForm();
+        }
+
+        function clearAuthForm() {
+            document.getElementById('email').value = '';
+            document.getElementById('password').value = '';
+            showAlert('', 'success');
         }
 
         // Utilidades
         function showAlert(message, type = 'success') {
             const alertDiv = document.getElementById('alert');
-            alertDiv.innerHTML = `<div class="alert ${type}">${message}</div>`;
-            setTimeout(() => {
-                alertDiv.innerHTML = '';
-            }, 4000);
+            alertDiv.innerHTML = message ? `<div class="alert ${type}">${message}</div>` : '';
+            if (message) {
+                setTimeout(() => {
+                    alertDiv.innerHTML = '';
+                }, 4000);
+            }
         }
 
         function getToken() {
@@ -358,8 +377,8 @@
             document.getElementById('productsSection').classList.toggle('hidden');
         }
 
-        // Login
-        async function login() {
+        // Login funcional
+        async function submitLogin() {
             const email = document.getElementById('email').value;
             const password = document.getElementById('password').value;
 
@@ -378,13 +397,14 @@
                 const data = await response.json();
 
                 if (!response.ok) {
-                    showAlert(data.error || 'Error en el login', 'error');
+                    showAlert(data.error || 'Error de autenticación', 'error');
                     return;
                 }
 
                 setToken(data.token);
                 document.getElementById('authSection').style.display = 'none';
                 document.getElementById('productsSection').style.display = 'block';
+                document.getElementById('welcomeSection').style.display = 'none';
                 showAlert('✅ Login exitoso', 'success');
             } catch (error) {
                 showAlert('Error de conexión: ' + error.message, 'error');
@@ -394,8 +414,10 @@
         // Logout
         function logout() {
             removeToken();
-            document.getElementById('authSection').style.display = 'block';
+            document.getElementById('authSection').style.display = 'none';
             document.getElementById('productsSection').style.display = 'none';
+            document.getElementById('welcomeSection').style.display = 'block';
+            clearAuthForm();
             showAlert('Sesión cerrada', 'success');
         }
 
@@ -449,4 +471,3 @@
     </script>
 </body>
 </html>
-q   

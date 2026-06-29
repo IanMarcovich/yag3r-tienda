@@ -1,9 +1,7 @@
 import ProductService from "../services/product.service.js";
 
-import { getAllProducts } from "../models/product.model.js";
-
 // GET /api/products
-const getProducts = async (req, res) => {
+const getAllProducts = async (req, res) => {
   try {
     const products = await ProductService.getAllProducts();
     res.status(200).json(products);
@@ -11,7 +9,7 @@ const getProducts = async (req, res) => {
     console.error("Error al obtener los productos:", error.message);
     res.status(500).json({ error: "Error interno al obtener los productos." });
   }
-}
+};
 
 export const getProductById = async (req, res) => {
   try {

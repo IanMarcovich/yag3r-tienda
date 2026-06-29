@@ -1,7 +1,7 @@
 import AuthService from "../services/auth.service.js";
 
 // POST /auth/login
-const login = (req, res) => {
+const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
@@ -9,7 +9,7 @@ const login = (req, res) => {
       return res.status(400).json({ error: "Email y contraseña son requeridos." });
     }
 
-    const token = AuthService.login(email, password);
+    const token = await AuthService.login(email, password);
 
     if (!token) {
       return res.status(401).json({ error: "Credenciales inválidas. Acceso no autorizado." });
