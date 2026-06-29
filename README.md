@@ -47,7 +47,7 @@ Completá el archivo `.env` con tus credenciales reales:
 PORT=3000
 JWT_SECRET=tu_clave_secreta
 
-ADMIN_EMAIL=admin@techlab.com
+ADMIN_EMAIL=admin@tuweb.com
 ADMIN_PASSWORD=admin123
 
 FIREBASE_API_KEY=...
