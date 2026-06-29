@@ -80,7 +80,7 @@ npm run start
 
 **Body:**
 ```json
-{ "email": "admin@techlab.com", "password": "admin123" }
+{ "email": "admin@tuweb.com", "password": "admin123" }
 ```
 
 ---
